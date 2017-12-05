@@ -10,3 +10,6 @@ ISLink.java - An interface that your link cells for SingleLinkList must implemen
 IDLink.java - An interface that your link cells for DoubleLinkList must implement
 Test.java   - A fairly good but incomplete test suite (e.g. insert is not tested well)
 TestFailedException.java - An exception thrown when a test failure is detected
+ArrayList.java - Creates an array list that's mutable, the programs uses arrays
+SingleLinkList.java - Creates a list that's mutable and has pointer that only forward.
+DoubleLinkList.java - Creates a list that's mutable and has pointer that only forward and backwards.
