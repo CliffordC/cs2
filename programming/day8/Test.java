@@ -14,7 +14,7 @@ public class Test {
             words.append(l);
             l=br.readLine();
         }
-        
+
         System.out.println("Doing the inserts");
         // Add them to the dictionaries in random order
         String[] allwords = new String[words.size()];
@@ -28,7 +28,7 @@ public class Test {
             linear.add(allwords[i],i);
             tree.add(allwords[i],i);
         }
-        
+
         System.out.println("Timing 100,000 fetches");
         long s;
         long e;
@@ -41,7 +41,7 @@ public class Test {
             }
         }
         e = System.currentTimeMillis();
-        System.out.println("Tree dict took "+(e-s)+"ms");
+        System.out.println("List dict took "+(e-s)+"ms");
         rand.setSeed(0);
         s = System.currentTimeMillis();
         for(int i=0; i<100000; i++) {
