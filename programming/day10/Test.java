@@ -10,7 +10,7 @@ public class Test {
         ISort[] sorts = new ISort[2];
         sorts[0] = new SelectSort<Integer>();
         sorts[1] = new MergeSort<Integer>();
-        
+
         Random r = new Random();
         // Process each algorithm
         for(int i=0; i<sorts.length; i++) {
