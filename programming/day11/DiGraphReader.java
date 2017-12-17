@@ -29,18 +29,33 @@ public class DiGraphReader implements IGraphReader {
         // Open the file
           BufferedReader br=new BufferedReader(new FileReader(filename));
           String h = br.readLine();
+          IDict<String,INode<String>> tree = new BSTree();
 
           while(h != null){
-            String u[] =  h.split(":");
-            if(u.length == 3){
+            System.out.println("hello");
+            String u[] = h.split(":");
+            //Get the source if it already exists or else make a new one
+            if(tree.fetch(u[0]) == null){
               one = r.addNode(u[0]);
-              two = r.addNode(u[1]);
-              Double b = Double.parseDouble(u[2]);
-              r.addEdge(one,two,b);
+              tree.add(u[0],one);
             }
+
+          one = tree.fetch(u[0]);
+          System.out.println(one);
+            //Get the dest. node if is already exists or make new once
+            if(tree.fetch(u[1]) == null){
+              two = r.addNode(u[1]);
+              tree.add(u[1],two);
+            }
+          two = tree.fetch(u[1]);
+          System.out.println(two);
+            //add the edge to the graphs
+            Double b = Double.parseDouble(u[2]);
+            r.addEdge(one,two,b);
 
             h = br.readLine();
           }
+
         // Parse the lines. If a line does not have exactly 3 fields, ignore the line
         // For each line, add the nodes and edge
 
@@ -56,8 +71,8 @@ public class DiGraphReader implements IGraphReader {
         IGraphReader rr = new DiGraphReader();
         IGraph<String,Double> g = rr.read("graphfile.cs2");
         IEdge<String,Double>[] edges = g.getEdgeSet();
-        for(int i=0; i<edges.length - 1 ; i++) {
-            System.out.println(edges[i].getSource().getValue()+" -> "+edges[i].getDestination().getValue()+"  w: "+edges[i].getWeight());
+        for(int i=0; i<edges.length ; i++) {
+            System.out.println(edges[i].getSource()+" -> "+edges[i].getDestination()+"  w: "+edges[i].getWeight());
         }
     }
 }

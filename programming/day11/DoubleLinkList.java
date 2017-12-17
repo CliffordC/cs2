@@ -53,7 +53,6 @@ public class DoubleLinkList<N> implements IList<N> {
     }
     listSize++;
     current = listSize - 1;
-  //  System.out.println(v);
   }
 
   public void remove(){
@@ -105,31 +104,22 @@ public class DoubleLinkList<N> implements IList<N> {
   }
 
   public N fetch(){
-    IDLink<N> fetched = null;
-    for(int i = 0; i <= current ; i++){
-      if(i == 0){
-        fetched = head;
-      }
-      else{
+    IDLink<N> fetched = head;
+    for(int i = 0; i <= current ; i++) {
         fetched = fetched.getNext();
       }
-    }
-    System.out.println(fetched.getValue());
     return fetched.getValue();
   }
 
   public N fetch(int idx){
-    IDLink<N> fetched = null;
-    for(int i = 0; i <= idx ; i++){
-      if(i == 0){
-        fetched = head;
-      }
-      else{
+    IDLink<N> fetched = head;
+    for(int i = 0; i < idx ; i++) {
         fetched = fetched.getNext();
       }
-    }
     return fetched.getValue();
   }
+
+
 
   public void next(){
     if(current < listSize - 1){
