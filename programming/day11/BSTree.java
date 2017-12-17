@@ -69,16 +69,20 @@ public class BSTree<K extends Comparable<K>,V> implements IDict<K,V> {
     }
 
     public V fetch(K k) {
+        curr = root;
         if(curr == null){
           return null;
         }
-        curr = root;
+
         while(k.compareTo(curr.getKey()) != 0) {
             if(k.compareTo(curr.getKey()) < 0 && curr.getLeft() != null) {
                 curr = curr.getLeft();
             }
             else if(k.compareTo(curr.getKey()) > 0 && curr.getRight() != null) {
                 curr = curr.getRight();
+            }
+            else if(k.compareTo(curr.getKey()) != 0){
+              return null;
             }
             else{
               return curr.getValue();
