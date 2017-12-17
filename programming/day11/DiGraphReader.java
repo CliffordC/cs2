@@ -32,35 +32,25 @@ public class DiGraphReader implements IGraphReader {
           IDict<String,INode<String>> tree = new BSTree();
 
           while(h != null){
-            System.out.println("hello");
             String u[] = h.split(":");
             //Get the source if it already exists or else make a new one
             if(tree.fetch(u[0]) == null){
               one = r.addNode(u[0]);
               tree.add(u[0],one);
             }
-
-          one = tree.fetch(u[0]);
-          System.out.println(one);
+            one = tree.fetch(u[0]);
             //Get the dest. node if is already exists or make new once
             if(tree.fetch(u[1]) == null){
               two = r.addNode(u[1]);
               tree.add(u[1],two);
             }
-          two = tree.fetch(u[1]);
-          System.out.println(two);
+            two = tree.fetch(u[1]);
             //add the edge to the graphs
             Double b = Double.parseDouble(u[2]);
             r.addEdge(one,two,b);
-
             h = br.readLine();
           }
-
-        // Parse the lines. If a line does not have exactly 3 fields, ignore the line
-        // For each line, add the nodes and edge
-
-        // Return the graph instance
-        return r;
+          return r;
     }
 
     /**
@@ -72,7 +62,7 @@ public class DiGraphReader implements IGraphReader {
         IGraph<String,Double> g = rr.read("graphfile.cs2");
         IEdge<String,Double>[] edges = g.getEdgeSet();
         for(int i=0; i<edges.length ; i++) {
-            System.out.println(edges[i].getSource()+" -> "+edges[i].getDestination()+"  w: "+edges[i].getWeight());
+            System.out.println(edges[i].getSource().getValue()+" -> "+edges[i].getDestination().getValue()+"  w: "+edges[i].getWeight());
         }
     }
 }
