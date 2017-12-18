@@ -24,17 +24,14 @@ public class BSTree<K extends Comparable<K>,V> implements IDict<K,V> {
             curr = root;
             return root.getValue();
         }
-        System.out.println("helper called");
           return helper(k,v);
     }
 
 
     public V helper(K k, V v) {
-      System.out.println("We're in the helper");
         if((k.compareTo(curr.getKey()) < 0)){
               if(curr.getLeft()== null){
                 curr.setLeft(new TreeNode<K,V>(k,v));
-                System.out.println("left node");
                 size++;
               }
             }
@@ -42,7 +39,6 @@ public class BSTree<K extends Comparable<K>,V> implements IDict<K,V> {
         if((k.compareTo(curr.getKey()) > 0)){
               if(curr.getRight()== null){
                 curr.setRight(new TreeNode<K,V>(k,v));
-                System.out.println("right node");
                 size++;
               }
             }
@@ -179,17 +175,4 @@ public class BSTree<K extends Comparable<K>,V> implements IDict<K,V> {
       return keys;
     }
 
-    // public static void main(String[] argv) {
-    //     BSTree t = new BSTree<Integer>();
-    //     t.insert(17,17);
-    //     t.insert(20,20);
-    //     t.insert(25,25);
-    //     t.insert(18,18);
-    //     t.insert(1,1);
-    //     t.insert(21,21);
-    //     t.insert(22,22);
-    //     t.remove(20);
-    //     System.out.println(t.fetch(22));
-    //     System.out.println(t.fetch(20));
-    // }
 }

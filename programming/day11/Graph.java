@@ -20,21 +20,18 @@ public class Graph<N,W> implements IGraph<N,W> {
   }
 
   public INode<N>[] getNeighbors(INode<N> n){
-    N valueHeld = n.getValue();
-    INode[] a = new INode[10];
-    int count = 0;
+    DoubleLinkList<INode> neighbors = new DoubleLinkList();
     for(int i = 0; i < edges.size();i++){
       IEdge<N,W> thisOne = edges.fetch(i);
-      if(thisOne.getDestination().equals(n) ){
-        a[i] = thisOne.getDestination();
-        count++;
-      }
       if(thisOne.getSource().equals(n) ){
-        a[i] = thisOne.getSource();
-        count++;
+        neighbors.append(thisOne.getDestination());
       }
     }
 
+    INode<N>[] a = (Node<N>[])new Node[neighbors.size()];
+    for(int u = 0; u < neighbors.size(); u++){
+      a[u] = neighbors.fetch(u);
+    }
     return a;
   }
 
