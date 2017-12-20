@@ -1,4 +1,4 @@
-public class DepthFirstSearcher<N,W> {
+public class DepthFirstSearcher<N,W> implements ISearcher<N,W> {
 
   //Fields
   INode<N> start;
@@ -46,30 +46,33 @@ public class DepthFirstSearcher<N,W> {
               going.push(graph.getNeighbors(start)[i]);
             }
           }
-          else{//if that node has no children and not it
-            going.pop();
-          }
+
           // This part was supposed to handle edge cases as well as times when paths doesnt exist couldn't get it to works
+          // if(graph.getNeighbors(start).length == 0 && !start.equals(end)){
           // INode<N> holder = vis_list.pop();
           // vis_list.push(holder);
-          // if(holder.equals(start)){
-          //   while(holder.equals(start)){
-          //     System.out.println("going size " + going.size());
-          //     if(going.size() == 0 || start.equals(null)){
-          //       break;
-          //     }
-          //     else{
-          //       vis_list.pop();
-          //       going.pop();
-          //       holder = vis_list.pop();
-          //       vis_list.push(holder);
-          //       if(going.size() != 0){
-          //       start = going.pop();
-          //       going.push(start);
-          //     }
+          //   if(holder.equals(start)){
+          //     while(holder.equals(start)){
+          //       System.out.println("going size " + going.size());
+          //       if(going.size() == 0 || start.equals(null)){
+          //         break;
+          //       }
+          //       else{
+          //         vis_list.pop();
+          //         going.pop();
+          //         holder = vis_list.pop();
+          //         vis_list.push(holder);
+          //         if(going.size() != 0){
+          //           start = going.pop();
+          //           going.push(start);
+          //         }
+          //       }
           //     }
           //   }
           // }
+          else{//if that node has no children and not it
+            going.pop();
+          }
           }
         }
     Stack<INode<N>> final_stack = new Stack();
